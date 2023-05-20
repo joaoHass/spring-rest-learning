@@ -14,14 +14,17 @@ import java.time.LocalDate;
 *            Hibernate uses the entity name to choose which table to use on the db.  */
 public class Student {
     @Id
+    /* The SequenceGenerator indicates that the responsible for generating the unique identifier
+    *  will be the persistence provider (aka database). We pass the name of @SequenceGenerator on
+    *  the 'generator' property, which will basically map to the sequence on the database*/
+    @GeneratedValue (
+            strategy = GenerationType.SEQUENCE,
+            generator = "student_sequence"
+    )
     @SequenceGenerator (
             name = "student_sequence",
             sequenceName = "student_sequence",
             allocationSize = 1
-    )
-    @GeneratedValue (
-            strategy = GenerationType.SEQUENCE,
-            generator = "student_sequence"
     )
     private Integer id;
     private String name;
