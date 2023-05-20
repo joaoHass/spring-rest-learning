@@ -10,7 +10,9 @@ import jakarta.persistence.Table;
 import java.time.LocalDate;
 
 @Entity
-@Table
+/* @Table -> We don't have to use the @Table annotation here because the table we will
+*            be registering on the database has the same name as the entity, so by default
+*            Hibernate uses the entity name to choose which table to use on the db.  */
 public class Student {
     @Id
     @SequenceGenerator (
