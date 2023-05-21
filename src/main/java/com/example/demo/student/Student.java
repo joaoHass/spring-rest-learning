@@ -5,6 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Transient;
 
 import java.time.LocalDate;
 
@@ -30,6 +31,7 @@ public class Student {
     private String name;
     private String email;
     private LocalDate dateOfBirth;
+    @Transient
     private Integer age;
 
     public Student() {}
