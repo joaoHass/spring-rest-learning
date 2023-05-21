@@ -41,6 +41,7 @@ public class Student {
         this.name = name;
         this.email = email;
         this.dateOfBirth = dateOfBirth;
+        this.age = Period.between(dateOfBirth, LocalDate.now()).getYears();
     }
 
     public Student(Integer id, String name, String email, LocalDate dateOfBirth) {
@@ -78,6 +79,7 @@ public class Student {
 
     public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+        this.age = Period.between(dateOfBirth, LocalDate.now()).getYears();
     }
 
     public Integer getAge() {
