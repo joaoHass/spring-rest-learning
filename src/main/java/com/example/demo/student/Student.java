@@ -8,6 +8,7 @@ import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Transient;
 
 import java.time.LocalDate;
+import java.time.Period;
 
 @Entity
 /* @Table -> We don't have to use the @Table annotation here because the table we will
@@ -36,15 +37,14 @@ public class Student {
 
     public Student() {}
 
-    public Student(String name, String email, LocalDate dateOfBirth, Integer age) {
+    public Student(String name, String email, LocalDate dateOfBirth) {
         this.name = name;
         this.email = email;
         this.dateOfBirth = dateOfBirth;
-        this.age = age;
     }
 
-    public Student(Integer id, String name, String email, LocalDate dateOfBirth, Integer age) {
-        this (name, email, dateOfBirth, age);
+    public Student(Integer id, String name, String email, LocalDate dateOfBirth) {
+        this (name, email, dateOfBirth);
         this.id = id;
     }
 
@@ -82,10 +82,6 @@ public class Student {
 
     public Integer getAge() {
         return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
     }
 
     @Override
