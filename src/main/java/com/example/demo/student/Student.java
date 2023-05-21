@@ -44,11 +44,8 @@ public class Student {
     }
 
     public Student(Integer id, String name, String email, LocalDate dateOfBirth, Integer age) {
+        this (name, email, dateOfBirth, age);
         this.id = id;
-        this.name = name;
-        this.email = email;
-        this.dateOfBirth = dateOfBirth;
-        this.age = age;
     }
 
     public Integer getId() {
