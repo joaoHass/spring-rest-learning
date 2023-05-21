@@ -44,17 +44,8 @@ public class Student {
         this.age = Period.between(dateOfBirth, LocalDate.now()).getYears();
     }
 
-    public Student(Integer id, String name, String email, LocalDate dateOfBirth) {
-        this (name, email, dateOfBirth);
-        this.id = id;
-    }
-
     public Integer getId() {
         return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getName() {
