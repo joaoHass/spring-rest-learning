@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -37,6 +39,18 @@ public class StudentController {
         }
 
         return new ResponseEntity<>(String.format("Student with the email %s was added successfully!", student.getEmail()), HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("/{studentId}")
+    public ResponseEntity<?> deleteStudent(@PathVariable("studentId") Integer studentId) {
+        try {
+            studentService.deleteStudent(studentId);
+        }
+        catch (IllegalArgumentException ex) {
+            return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<>(String.format("Student with the id %s was successfully deleted!", studentId), HttpStatus.OK);
     }
 
 }
