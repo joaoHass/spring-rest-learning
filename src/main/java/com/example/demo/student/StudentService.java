@@ -21,7 +21,15 @@ public class StudentService {
         return studentRepository.findAll();
     }
 
-    public void addNewStudent(Student student) {
+    public void addNewStudent(Student student) throws IllegalArgumentException {
+
+        if (studentExists(student.getEmail()))
+            throw new IllegalArgumentException(String.format("The e-mail %s is already taken", student.getEmail()));
+
         studentRepository.save(student);
+    }
+
+    public boolean studentExists(String studentEmail) {
+        return studentRepository.findStudentByEmail(studentEmail).isPresent();
     }
 }
