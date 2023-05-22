@@ -6,6 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Transient;
+import jakarta.persistence.PostLoad;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -75,6 +76,11 @@ public class Student {
 
     public Integer getAge() {
         return age;
+    }
+
+    @PostLoad
+    private void computeAge() {
+        this.age = Period.between(dateOfBirth, LocalDate.now()).getYears();
     }
 
     @Override
