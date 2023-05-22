@@ -32,4 +32,11 @@ public class StudentService {
     public boolean studentExists(String studentEmail) {
         return studentRepository.findStudentByEmail(studentEmail).isPresent();
     }
+
+    public void deleteStudent(Integer studentId) throws IllegalArgumentException {
+        if (!studentRepository.existsById(studentId))
+            throw new IllegalArgumentException(String.format("A user with the id %s does not exist!", studentId));
+
+        studentRepository.deleteById(studentId);
+    }
 }
