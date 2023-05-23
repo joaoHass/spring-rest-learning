@@ -52,7 +52,7 @@ public class StudentService {
         if (studentToUpdate.isEmpty())
             throw new IllegalArgumentException(String.format("A user with the id %s does not exist!", studentId));
 
-        studentToUpdate.get().setName(studentDTO.getName());
-        studentToUpdate.get().setEmail(studentDTO.getEmail());
+        studentToUpdate.get().setName(studentDTO.name());
+        studentToUpdate.get().setEmail(studentDTO.email());
     }
 }
